@@ -6,16 +6,16 @@ const Header = () => {
             {/* <!-- Navigation --> */}
             <h1><Link className="home" to="/">GamesPlay</Link></h1>
             <nav>
-                <Link to="#">All games</Link>
+                <Link to="/game-list">All games</Link>
                 {/* <!-- Logged-in users --> */}
                 <div id="user">
-                    <Link to="#">Create Game</Link>
-                    <Link to="#">Logout</Link>
+                    <Link to="/create-game">Create Game</Link>
+                    <Link to="/logout">Logout</Link>
                 </div>
                 {/* <!-- Guest users --> */}
                 <div id="guest">
-                    <Link to="#">Login</Link>
-                    <Link to="#">Register</Link>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
                 </div>
             </nav>
         </header>
