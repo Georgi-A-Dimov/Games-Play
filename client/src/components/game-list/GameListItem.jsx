@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const GameListItem = ({
+    _id,
     title,
     category,
     imageUrl,
@@ -8,10 +9,10 @@ const GameListItem = ({
     return (
         <div class="allGames">
             <div className="allGames-info">
-                <img src={imageUrl} alt={title} />
+                <img src={imageUrl} />
                 <h6>{category}</h6>
                 <h2>{title}</h2>
-                <Link to="/details" className="details-button">Details</Link>
+                <Link to={`/games/${_id}`} className="details-button">Details</Link>
             </div>
         </div>
     );
