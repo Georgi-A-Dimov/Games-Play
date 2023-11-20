@@ -1,13 +1,16 @@
+import * as gameService from "../../services/gameService";
 
+const createHandler = async(e) => {
+    e.preventDefault();
 
-function createHandler () {
-    
+    const gameData = Object.fromEntries(new FormData(e.target));
+    await gameService.create(gameData);
 };
 
 const CreateGame = () => {
     return (
         <section id="create-page" className="auth">
-            <form id="create" >
+            <form id="create" onSubmit={createHandler}>
                 <div className="container">
 
                     <h1>Create Game</h1>
