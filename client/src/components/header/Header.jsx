@@ -6,7 +6,7 @@ const Header = () => {
             {/* <!-- Navigation --> */}
             <h1><Link className="home" to="/">GamesPlay</Link></h1>
             <nav>
-                <Link to="/game-list">All games</Link>
+                <Link to="/games">All games</Link>
                 {/* <!-- Logged-in users --> */}
                 <div id="user">
                     <Link to="/create-game">Create Game</Link>

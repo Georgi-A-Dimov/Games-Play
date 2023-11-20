@@ -6,10 +6,10 @@ const Login = () => {
                 <div class="container">
                     <div class="brand-logo"></div>
                     <h1>Login</h1>
-                    <label for="email">Email:</label>
+                    <label htmlFor="email">Email:</label>
                     <input type="email" id="email" name="email" placeholder="Sokka@gmail.com" />
 
-                    <label for="login-pass">Password:</label>
+                    <label htmlFor="login-pass">Password:</label>
                     <input type="password" id="login-password" name="password" />
                     <input type="submit" class="btn submit" value="Login" />
                     <p class="field">
