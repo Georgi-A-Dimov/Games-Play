@@ -4,8 +4,8 @@ import { useContext } from 'react';
 
 const Login = () => {
 
-    const { loginSubmitHadler } = useContext(AuthContext)
-    const { values, onChange, onSubmit } = useForm(loginSubmitHadler, {
+    const { loginSubmitHandler } = useContext(AuthContext)
+    const { values, onChange, onSubmit } = useForm(loginSubmitHandler, {
         email: '',
         password: '',
     });
