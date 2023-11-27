@@ -46,6 +46,7 @@ function App() {
         registerSubmitHandler,
         logoutHandler,
         isAuthenticated: !!auth.accessToken,
+        email: auth.email,
     };
 
     return (
