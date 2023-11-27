@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import GameListItem from "./GameListItem";
+import GameListItem from "../game-list/GameListItem";
 import * as gameService from "../../services/gameService";
 
-const GameList = () => {
+export default function GameList() {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        gameService.getAll().then(setGames);
+        gameService.getAll()
+            .then(result => setGames(result));
     }, []);
 
     return (
@@ -18,5 +19,3 @@ const GameList = () => {
         </section>
     )
 };
-
-export default GameList;

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 
-const GameListItem = ({
+export default function GameListItem({
     _id,
     title,
     category,
     imageUrl,
-}) => {
+}) {
     return (
-        <div class="allGames">
+        <div className="allGames">
             <div className="allGames-info">
                 <img src={imageUrl} />
                 <h6>{category}</h6>
@@ -17,5 +17,3 @@ const GameListItem = ({
         </div>
     );
 };
-
-export default GameListItem;
