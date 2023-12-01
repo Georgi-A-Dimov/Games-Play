@@ -1,8 +1,5 @@
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import AuthContext from './contexts/AuthContext';
-import * as userService from './services/userService';
 import Path from './paths';
 
 import Home from './components/home/Home';
@@ -13,46 +10,13 @@ import Register from './components/register/Register';
 import CreateGame from './components/create-game/CreateGame';
 import GameDetails from './components/game-details/GameDetails';
 import Logout from './components/logout/Logout';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
-    const navigate = useNavigate();
-    const [auth, setAuth] = useState(() => {
-        localStorage.removeItem('accessToken')
-        return {}
-    }
-    );
-
-    const loginSubmitHandler = async (values) => {
-        const result = await userService.login(values.email, values.password);
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken);
-        navigate(Path.Home);
-    };
-
-    const registerSubmitHandler = async (values) => {
-        const result = await userService.register(values.email, values.password);
-        setAuth(result);
-        localStorage.setItem('accessToken', result.accessToken);
-        navigate(Path.Home);
-    };
-
-    const logoutHandler = () => {
-        setAuth({});
-        navigate(Path.Home);
-    };
-
-    const values = {
-        loginSubmitHandler,
-        registerSubmitHandler,
-        logoutHandler,
-        isAuthenticated: !!auth.accessToken,
-        email: auth.email,
-    };
 
     return (
-        <div id="box">
-            <AuthContext.Provider value={values}>
-
+        <AuthProvider>
+            <div id="box">
                 <Header />
 
                 <Routes>
@@ -64,9 +28,8 @@ function App() {
                     <Route path='/games/:gameId' element={<GameDetails />} />
                     <Route path={Path.Logout} element={<Logout />} />
                 </Routes>
-
-            </AuthContext.Provider>
-        </div>
+            </div>
+        </AuthProvider>
     )
 }
 
