@@ -9,6 +9,7 @@ const Register = () => {
     const { values, onChange, onSubmit } = useForm(registerSubmitHandler, {
         email: '',
         password: '',
+        confirmPassword: '',
     });
 
     return (
@@ -25,7 +26,7 @@ const Register = () => {
                     <input type="password" name="password" id="register-password" onChange={onChange} value={values.password}/>
 
                     <label htmlFor="con-pass">Confirm Password:</label>
-                    <input type="password" name="confirm-password" id="confirm-password" />
+                    <input type="password" name="confirmPassword" id="confirmPassword" onChange={onChange} value={values.confirmPassword}/>
 
                     <input className="btn submit" type="submit" value="Register" />
 

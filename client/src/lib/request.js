@@ -23,15 +23,15 @@ const buildOptions = (data) => {
 const request = async(method, url, data) => {
 
     const response = await fetch(url, {
-        method,
         ...buildOptions(data),
+        method,
     });
 
     if (response.status === 204) {
         return {};
     }
 
-    const result = response.json();
+    const result = await response.json();
 
     if (!response.ok) {
         throw result;
@@ -42,4 +42,4 @@ const request = async(method, url, data) => {
 export const get = request.bind(null, 'GET');
 export const post = request.bind(null, 'POST');
 export const put = request.bind(null, 'PUT');
-export const del = request.bind(null, 'DELETE');
+export const remove = request.bind(null, 'DELETE');

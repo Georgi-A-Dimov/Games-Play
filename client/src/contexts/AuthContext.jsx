@@ -1,5 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 import * as userService from '../services/userService';
 import Path from '../paths';
 import usePersistedState from "../hooks/usePersistedState";
@@ -28,6 +29,7 @@ export const AuthProvider = ({
 
     const logoutHandler = () => {
         setAuth({});
+        localStorage.removeItem('accessToken');
         navigate(Path.Home);
     };
 

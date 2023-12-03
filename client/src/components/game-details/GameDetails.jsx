@@ -1,14 +1,17 @@
 import { useState, useEffect, useContext, useReducer } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
 import AuthContext from "../../contexts/AuthContext";
 import reducer from "./commentReducer";
 import useForm from "../../hooks/useForm";
+import Path from "../../paths";
+import { pathToUrl } from "../utils/pathUtils";
 
-const GameDetails = () => {
+export default function GameDetails () {
 
-    const { email, userId } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const { email, userId } = useContext(AuthContext);
     const [game, setGame] = useState({});
     const [comments, dispatch] = useReducer(reducer, []);
     const { gameId } = useParams();
@@ -35,6 +38,16 @@ const GameDetails = () => {
             type: 'ADD_COMMENT',
             payload: newComment,
         });
+    };
+
+    const deleteButtonClickHandler = async () => {
+        const hasConfirmed = confirm(`Are you sure you want to delete ${game.title}`);
+
+        if (hasConfirmed) {
+            await gameService.remove(gameId);
+
+            navigate('/games');
+        }
     };
 
     const {values, onChange, onSubmit} = useForm(addCommentHandler, {
@@ -70,10 +83,10 @@ const GameDetails = () => {
                     {comments.length === 0 && (<p className="no-comment">No comments.</p>)}
                 </div>
 
-                {userId === game.ownerId &&
+                {userId === game._ownerId &&
                 (<div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
+                    <Link to={pathToUrl(Path.GameEdit, { gameId })} className="button">Edit</Link>
+                    <button className="button" onClick={deleteButtonClickHandler}>Delete</button>
                 </div>)}
             </div>
 
@@ -88,5 +101,3 @@ const GameDetails = () => {
         </section>
     )
 };
-
-export default GameDetails;
