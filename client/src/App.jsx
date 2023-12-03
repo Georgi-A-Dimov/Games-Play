@@ -10,7 +10,7 @@ import Register from './components/register/Register';
 import CreateGame from './components/create-game/CreateGame';
 import GameDetails from './components/game-details/GameDetails';
 import Logout from './components/logout/Logout';
-import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/authContext';
 import GameEdit from './components/edit-game/EditGame';
 
 function App() {

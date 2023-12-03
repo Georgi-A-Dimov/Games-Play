@@ -2,7 +2,7 @@ import { useState, useEffect, useContext, useReducer } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import * as gameService from '../../services/gameService';
 import * as commentService from '../../services/commentService';
-import AuthContext from "../../contexts/AuthContext";
+import AuthContext from "../../contexts/authContext";
 import reducer from "./commentReducer";
 import useForm from "../../hooks/useForm";
 import Path from "../../paths";

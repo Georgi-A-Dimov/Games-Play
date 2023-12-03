@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import * as userService from '../../services/userService';
-import AuthContext from "../../contexts/AuthContext";
+import AuthContext from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import Path from "../../paths";
 

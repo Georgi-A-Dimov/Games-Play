@@ -1,4 +1,4 @@
-import AuthContext from "../../contexts/AuthContext";
+import AuthContext from "../../contexts/authContext";
 import useForm from "../../hooks/useForm";
 import { useContext } from 'react';
 
